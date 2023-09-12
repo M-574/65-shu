@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gotouchi</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script src="https://kit.fontawesome.com/4ff97c1911.js" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div class="header">
+  <div class="header-nav">
+    <nav><%= link_to "Home", gourmets_top_path %></nav>
+    <nav><%= link_to "Search", gourmets_path %></nav>
+    <nav><%= link_to "Test", new_test_path %></nav>
+    <nav><%= link_to "POST", new_gourmet_path %></nav>
+    <% if user_signed_in? %>
+    <nav><%= link_to "Mypage", user_path(current_user.id) %></nav>
+    <% end %>
+    <% if user_signed_in? %>
+    <nav><%= link_to 'Log out', destroy_user_session_path, method: :delete %></nav>
+    <% else %>
+    <nav><%= link_to "Sign up", new_user_registration_path %></nav>
+    <nav><%= link_to "Log in", new_user_session_path %></nav>
+    <% end %>
+  </div>
+</div>
+
+  <main>
+    <%= yield %>
+  </main>
+  
+  <footer>
+    <p>Copyright © GeekSalon All Rights Reserved.</p>
+  </footer>
+  </body>

@@ -1,0 +1,106 @@
+
+<% @gourmet.tags.each do |tag| %>
+  <%= tag.name %>
+<% end %>
+
+<div class="detail-gourmet-container1">
+  <div class="detail-gourmet-container2">
+  <%= image_tag @gourmet.image_url, size: "250x200" if @gourmet.image? %>
+    <p>ご当地グルメ：<%= @gourmet.food %></p>
+    <p>店名：<%= @gourmet.shop_name %></p>
+    <p>価格：<%= @gourmet.price %></p>
+    <p>住所：<%= @gourmet.addres %></p>
+    <p>詳細：<%= @gourmet.about_shop %></p>
+  
+  <div>
+  <h2>総合評価：
+  <span class="star-rating">
+  <span class="star-rating-front" style="width: <%= getPercent(@gourmet.overall) %>%;">★★★★★</span>
+  <span class="star-rating-back">★★★★★</span>
+  </span> 
+  </h2>
+  </div>
+  
+  <p><%= @gourmet.created_at %></p>
+  
+</div>  
+
+<br>
+
+<div class="map-title">
+  <h2>Map</h2>
+</div>
+
+<div id='map'></div>
+
+<style>
+#map {
+  height: 600px;
+  width: 100%;
+}
+</style>
+
+<!-- js部分 -->
+<script>
+//初期マップの設定
+let map
+let marker
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center:  {lat: <%= @gourmet.lat %>, lng: <%= @gourmet.lng %>},
+    zoom: 15,
+  });
+
+  marker = new google.maps.Marker({
+    position:  {lat: <%= @gourmet.lat %>, lng: <%= @gourmet.lng %>},
+    map: map
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5YiQlX3PMEI7d7V-aL41HctWXVVCe8oU
+&callback=initMap" async defer></script>
+  
+  <% if user_signed_in? %>
+    <% if current_user.already_liked?(@gourmet) %>
+      <%= link_to gourmet_like_path(@gourmet), method: :delete do %>
+      <i class="fas fa-heart"></i><%= @gourmet.likes.count %>
+    <% end %>
+  <% else %>
+    <%= link_to gourmet_likes_path(@gourmet), method: :post do %>
+    <i class="fas fa-heart"></i><%= @gourmet.likes.count %>
+    <% end %>
+  <% end %>
+  <% else %>
+    <i class="fas fa-heart"></i><%= @gourmet.likes.count %>
+  <% end %>
+
+<h2>いいねしたユーザー</h2>
+<% @gourmet.liked_users.each do |user| %>
+  <li><%= user.email %></li>
+<% end %>
+
+  <div class="comment-wrapper">
+    <p>コメント一覧</p>
+    <% @comments.each do |c| %>
+      <div>
+        <%= c.user.email unless c.user.blank? %>
+        <br>
+        <%= c.content %>
+      </div>
+      <br>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <%= form_with(model: [@gourmet, @comment], local: true) do |f| %>
+      <%= f.text_area :content %>
+        <%= button_tag type: "submit" do %>
+          <i class="far fa-comments"></i> コメントする
+        <% end %>
+      <% end %>
+    <% end %>
+
+  </div>
+    <%= link_to "編集", edit_gourmet_path(@gourmet.id) %>
+  </div>

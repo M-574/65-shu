@@ -1,0 +1,192 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.mypage{
+  background-color: whitesmoke;
+}
+
+.mypage2{
+  background-color: whitesmoke;
+}
+
+.photo-mypage{
+  background-image: url("mypage.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 700px;
+}
+
+.phototitle-mypage{
+  font-size: 150px;
+  text-align: center;
+  font-family: 'Kaushan Script', cursive;
+  font-style: italic;
+  color: white;
+  padding-top: 300px;
+}
+
+.profile{
+  font-weight: bold;
+  background-color: lightblue;
+  color: #fff;
+  padding: 0px 5px;
+  text-align: center;
+  font-family: 'Kaushan Script', cursive;
+  font-size: 50px;
+  margin:auto;
+  width: 50%;
+}
+
+/*
+.name {
+  padding: 10px 10px;
+  position: relative;
+  border: 1px solid lightblue;
+  background-color: lightcoral;
+  border: dotted 6px lightcyan;
+  width: 30%;
+  margin:auto
+}
+*/
+
+.name{
+  display:flex
+}
+
+.edit {
+  text-decoration:underline;
+}
+
+.user_img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: solid 2px;
+  background-color: lightgoldenrodyellow;
+}
+
+.mypage-profile{
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.mypage-like{
+  justify-content: center;
+}
+
+/*
+.mypage-profile-left{
+  height: 600px;
+}
+*/
+
+/*タブ切り替え全体のスタイル*/
+.tabs {
+  margin-top: 40px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 700px;
+  margin: 0 auto;}
+
+/*タブのスタイル*/
+.tab_item {
+  width: calc(100%/2);
+  height: 50px;
+  border-bottom: 3px solid #5ab4bd;
+  background-color: #d9d9d9;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center;
+  color: #565656;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+.tab_item:hover {
+  opacity: 0.75;
+}
+
+/*ラジオボタンを全て消す*/
+input[name="tab_item"] {
+  display: none;
+}
+
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+  display: none;
+  padding: 40px 40px ;
+  clear: both;
+  overflow: hidden;
+  justify-content: space-around;
+
+}
+
+
+/*選択されているタブのコンテンツのみを表示*/
+#all:checked ~ #all_content,
+#programming:checked ~ #programming_content,
+#design:checked ~ #design_content {
+  display: block;
+}
+
+/*選択されているタブのスタイルを変える*/
+.tabs input:checked + .tab_item {
+  background-color: #5ab4bd;
+  color: #fff;
+}
+
+.tabs{
+  background-color: whitesmoke;
+  width: 50%;
+  z-index: 10;
+}
+
+.box100{
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.box100 a{
+  width:50%;
+}
+
+.image100{
+	width: 50%;
+}
+
+.box200{
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.box200 a{
+  width:50%;
+}
+
+.image200{
+  width:50%;
+}
+
+.title-mypage-like{
+  text-align: center;
+}
+
+.slide-image101{
+  border-radius: 20px/30px ; 
+  width:95%;
+  height: 30vh;
+  margin: 1.25%;
+}
+
+.slide-image201{
+  border-radius: 20px/30px ; 
+  width:95%;
+  height: 30vh;
+  margin: 1.25%;
+}

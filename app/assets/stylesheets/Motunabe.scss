@@ -1,0 +1,183 @@
+.Motunabe-gourmets-container{
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 33%;
+  width: 40%;
+  border-bottom: 2px solid;
+}
+
+.slideBox {
+  width:100%;
+  height: 700px;
+  overflow: hidden;
+  position: relative;
+  z-index: -10;
+}
+
+.title {
+  font-size: 80px;
+  font-family: 'Kaushan Script', cursive;;
+  color: #fff;
+  z-index: 11;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+/* imgのみ */
+.item1 {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 35px;
+  -webkit-animation: anime 12s 0s infinite;
+  animation: anime 12s 0s infinite;
+}
+
+.item1:nth-of-type(2) {
+  -webkit-animation-delay: 4s;
+  animation-delay: 4s;
+}
+
+.item1:nth-of-type(3) {
+  -webkit-animation-delay: 8s;
+  animation-delay: 8s;
+}
+
+/* ふわっとアニメーション */
+@keyframes anime {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    z-index: 9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes anime {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    z-index: 9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/*
+.img-box{
+  width: 100%;
+  height: 46vw;
+  overflow: hidden;
+  position: relative;
+}
+
+.img-box>div{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 46vw;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -10;
+  opacity: 0;
+  animation-name: fade;
+  animation-duration: 25s;
+  animation-iteration-count: infinite;
+  margin-top: 45px;
+}
+
+@keyframes fade {
+  0%{
+    opacity: 0;
+  }
+  20%{
+    opacity: 1;
+  }
+  80%{
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  100%{
+    opacity: 0;
+    z-index: 0;
+  }
+}
+
+.img-box>div:first-of-type{
+  background-image: url(Fukuoka1.jpg);
+}
+
+.img-box>div:nth-of-type(2){
+  background-image: url(Motunabe11.jpg);
+  animation-delay: 5s;
+}
+
+.img-box>div:nth-of-type(3){
+  background-image: url(Motunabe22.jpg);
+  animation-delay: 10s;
+}
+
+.img-box>div:nth-of-type(4){
+  background-image: url(Motunabe33.jpg);
+  animation-delay: 15s;
+}
+
+.img-box>div:last-of-type{
+  background-image: url(Motunabe44.jpg);
+  animation-delay: 20s;
+}
+*/
+
+.Motunabe-pagenation{
+  padding-top: 50px;
+}
+
+.gourmet{
+  display: flex;
+  margin: 5px 0px;
+}
+
+.user_img{
+  margin-right: 50px;
+}
+
+.photo-Motunabe{
+  margin-left: 150px;
+}
+
+.detail2{
+  margin-left: 150px;
+}
+
+.Motunabebox{
+  display: flex;
+  flex-wrap: wrap;
+}

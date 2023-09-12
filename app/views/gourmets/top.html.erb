@@ -1,0 +1,116 @@
+<%= link_to "ご当地グルメ一覧", gourmets_path %>  
+
+<body>
+
+
+<!--   First block Start   -->
+<!--
+<div class="first-block">
+  <div class="top-title-container">
+    <h1>-ご当地グルメ紹介サイト-</h1>
+  </div>
+</div>
+-->
+<!--   First block End   -->
+
+<div class="d-demo">
+<p class="top-title">EaTravel</p>
+  <div class="d-demo__wrap">
+    <div class="d-demo__list d-demo__list--left">
+      <div class="d-demo__item"><%= image_tag "Ginghiskhan11.jpg", class:"slide-image" %></div>
+      <div class="d-demo__item"><%= image_tag "Kaisendon1.jpg", class:"slide-image" %></div>
+      <div class="d-demo__item"><%= image_tag "Edomaemonzya.jpg", class:"slide-image" %></div>
+      <div class="d-demo__item"><%= image_tag "Edomaezushi1.jpg", class:"slide-image" %></div>
+      <div class="d-demo__item"><%= image_tag "Monzyayaki1.jpg", class:"slide-image" %></div>
+      <div class="d-demo__item"><%= image_tag "Takoyaki1.jpg", class:"slide-image" %></div>
+    </div>
+    <div class="d-demo__list d-demo__list--left">
+    <div class="d-demo__item"><%= image_tag "Ginghiskhan11.jpg", class:"slide-image" %></div>
+    <div class="d-demo__item"><%= image_tag "Kaisendon1.jpg", class:"slide-image" %></div>
+    <div class="d-demo__item"><%= image_tag "Edomaemonzya.jpg", class:"slide-image" %></div>
+    <div class="d-demo__item"><%= image_tag "Edomaezushi1.jpg", class:"slide-image" %></div>
+    <div class="d-demo__item"><%= image_tag "Monzyayaki1.jpg", class:"slide-image" %></div>
+    <div class="d-demo__item"><%= image_tag "Takoyaki1.jpg", class:"slide-image" %></div>
+    </div>
+    <div class="d-demo__list d-demo__list--left">
+    <div class="d-demo__item"><%= image_tag "Ginghiskhan11.jpg", class:"slide-image" %></div>
+    <div class="d-demo__item"><%= image_tag "Kaisendon1.jpg", class:"slide-image" %></div>
+    <div class="d-demo__item"><%= image_tag "Edomaemonzya.jpg", class:"slide-image" %></div>
+    <div class="d-demo__item"><%= image_tag "Edomaezushi1.jpg", class:"slide-image" %></div>
+    <div class="d-demo__item"><%= image_tag "Monzyayaki1.jpg", class:"slide-image" %></div>
+    <div class="d-demo__item"><%= image_tag "Takoyaki1.jpg", class:"slide-image" %></div>
+    </div>
+  </div>
+</div>
+
+
+<!--   Second block Start   -->
+  <div class="second-block">
+    <p class="title-about">
+      -About-
+    </p>
+    <div class="about-container">
+      <span class="font-small">
+        
+      </span>
+    </div>
+  </div>
+<!--   Second block End   -->
+  
+<!--   Third block Start   -->
+<div class="third-block">
+  <p class="title-feature">
+  -Feature-
+  </p>
+    <div class="feature-container">
+      <p class="info-text">
+        <b>Seacrh</b>
+        <br>
+        <%= link_to gourmets_path do %>
+        <%= image_tag "search.avif", class:"feature-image" %>
+        <% end %>
+        <br>
+          <span class="font-small">
+          ~ご当地グルメが食べられるお店を探す~
+          </span>
+      </p>
+
+      <p class="info-text">
+        <b>Test</b>
+        <br>
+        <%= link_to new_test_path do %>
+        <%= image_tag "test.jpg", class:"feature-image" %>
+        <% end %>
+        <br>
+        <span class="font-small">
+        ~おすすめのご当地グルメを診断する~
+        </span>
+      </p>
+
+      <p class="info-text">
+        <b>Post</b>
+        <br>
+        <%= link_to new_gourmet_path do %>
+        <%= image_tag "post.jpg", class:"feature-image" %>
+        <% end %>
+        <br>
+        <span class="font-small">
+        ~おすすめのお店を共有する~
+        </span>
+      </p>
+
+      <p class="info-text">
+        <b>My page</b>
+        <br>
+        <%= link_to user_path(current_user.id) do %>
+        <%= image_tag "mypage.jpg", class:"feature-image" %>
+        <% end %>
+        <br>
+        <span class="font-small">
+        ~お気に入りの保存~
+        </span>
+      </p>
+    </div>
+</div>
+<!--   Third block End   -->
+</body>

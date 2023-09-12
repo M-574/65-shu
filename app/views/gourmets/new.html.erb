@@ -1,0 +1,202 @@
+<div class="photo-post">
+  <div class="phototitle-post"> 
+    Post
+  </div>
+</div>
+
+<%= form_for @gourmet do |f| %>
+<!--
+<h5>都道府県を選択:</h5>
+  <div class='form-group'>
+    <%= f.collection_select :tag_ids, Tag.all, :id, :name, include_blank: "都道府県を選択してください"  %>
+  </div>
+-->
+
+<div class="post-container1">
+  <div class="title-post-container">
+    ~投稿~
+  </div>
+
+<div class="post-container2">
+  <div class="field">
+    <%= f.label :都道府県  %>
+    <%= f.select :prefecture, 
+    [["北海道", "北海道"], 
+    ["東京", "東京"], 
+    ["大阪", "大阪"], 
+    ["福岡", "福岡"]], include_blank: "選択して下さい" %>
+  </div>
+
+
+    <%= f.label :ご当地グルメ %>
+      <% if @gourmet.prefecture == "北海道" %>
+        <%= f.select :food, 
+        [["ジンギスカン", "ジンギスカン"], 
+        ["札幌ラーメン", "札幌ラーメン"], 
+        ["海鮮丼", "海鮮丼"], 
+        ["その他", "その他"]], include_blank: "選択して下さい" %>
+      <% elseif @gourmet.prefecture == "東京" %>
+        <%= f.select :food, 
+        [["江戸前寿司", "江戸前寿司"], 
+        ["もんじゃ焼き", "もんじゃ焼き"], 
+        ["どじょう鍋", "どじょう鍋"], 
+        ["その他", "その他"]], include_blank: "選択して下さい" %>
+      <% elseif @gourmet.prefecture == "大阪" %>
+        <%= f.select :food, 
+        [["たこやき", "たこ焼き"], 
+        ["お好み焼き", "お好み焼き"], 
+        ["串カツ", "串カツ"], 
+        ["その他", "その他"]], include_blank: "選択して下さい" %> 
+      <% else %>
+        <%= f.select :food, 
+        [["もつ鍋", "もつ鍋"], 
+        ["博多ラーメン", "博多ラーメン"], 
+        ["水炊き", "水炊き"], 
+        ["その他", "その他"]], include_blank: "選択して下さい" %>
+      <% end %>
+
+
+  <!--
+  <div class="field">
+    <%= f.label :ご当地グルメ %>
+    <%= f.text_field :food, :size => 30 %>
+  </div>
+  -->
+
+  <div class="field">
+    <%= f.label :店名 %>
+    <%= f.text_field :shop_name, :size => 30 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :価格  %>
+    <%= f.select :price, 
+    [["~￥999", "~￥999"], 
+    ["￥1,000~￥1,999", "￥1,000~￥1,999"], 
+    ["￥2,000~￥2,999", "￥2,000~￥2,999"], 
+    ["￥3,000~￥3,999", "￥3,000~￥3,999"], 
+    ["￥4,000~￥4,999", "￥4,000~￥4,999"], 
+    ["￥5,000~￥9,999", "￥5,000~￥9,999"], 
+    ["￥10,000~", "￥10,000~"]], include_blank: "選択して下さい" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :住所 %>
+    <%= f.text_field :addres, :size => 30 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :お店の詳細 %>
+    <%= f.text_area :about_shop, :size => "30x2" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :写真 %>
+    <%= f.file_field :image %>
+  </div>
+
+  <h5>総合評価</h5>
+  <div class="post_form">
+    <%= f.radio_button :overall, 5 ,id: 'star1'%>
+    <label for="star1"><span class="text">最高</span>★</label>
+
+    <%= f.radio_button :overall, 4 ,id: 'star2'%>
+    <label for="star2"><span class="text">良い</span>★</label>
+
+    <%= f.radio_button :overall, 3 ,id: 'star3'%>
+    <label for="star3"><span class="text">普通</span>★</label>
+
+    <%= f.radio_button :overall, 2 ,id: 'star4'%>
+    <label for="star4"><span class="text">悪い</span>★</label>
+
+    <%= f.radio_button :overall, 1 ,id: 'star5'%>
+    <label for="star5"><span class="text">最悪</span>★</label>
+  </div>
+</div>
+
+<br>
+
+  <div class="map-title">
+    <h2>Map</h2>
+  </div>
+
+<div class="map">
+  <input id="address" type="textbox" value="GeekSalon">
+  <input type="button" value="検索" onclick="codeAddress()">
+  <div class="latlng">
+  <%= f.label :lat,"緯度" %>
+  <%= f.text_field :lat,:value =>"緯度", id: :lat %>
+  <%= f.label :lng,"経度" %>
+  <%= f.text_field :lng,:value =>"経度", id: :lng %>
+  </div>
+  <p>マーカーをドラック＆ドロップで位置の調整ができます。<p>
+  <div id='map'></div>
+  
+  <style>
+  #map 
+  {
+    height: 600px;
+    width: 600px;
+  }
+  </style>
+  
+  <script>
+  //初期マップの設定
+  let map
+  let marker
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+  
+    map = new google.maps.Map(document.getElementById('map'), {
+      center:  {lat: 35.6803997, lng:139.7690174},  //東京
+      zoom: 15,
+      
+    });
+  }
+  
+  //検索後のマップ作成
+  let geocoder
+  let aft
+  function codeAddress(){
+    let inputAddress = document.getElementById('address').value;
+    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+      if (status == 'OK') {
+          //マーカーが複数できないようにする
+          if (aft == true){
+              marker.setMap(null);
+          }
+  
+          //新しくマーカーを作成する
+          map.setCenter(results[0].geometry.location);
+              marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location,
+              draggable: true	// ドラッグ可能にする
+          });
+  
+          //二度目以降か判断
+          aft = true
+  
+          //検索した時に緯度経度を入力する
+          document.getElementById('lat').value = results[0].geometry.location.lat();
+          document.getElementById('lng').value = results[0].geometry.location.lng();
+  
+          // マーカーのドロップ（ドラッグ終了）時のイベント
+          google.maps.event.addListener( marker, 'dragend', function(ev){
+              // イベントの引数evの、プロパティ.latLngが緯度経度
+              document.getElementById('lat').value = ev.latLng.lat();
+              document.getElementById('lng').value = ev.latLng.lng();
+          });
+      } else {
+        alert('該当する結果がありませんでした：' + status);
+      }
+    });   
+  }
+  
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5YiQlX3PMEI7d7V-aL41HctWXVVCe8oU&callback=initMap" async defer></script>
+  
+  <%= f.submit "投稿" %>
+  <% end %>  
+</div>
+</div>

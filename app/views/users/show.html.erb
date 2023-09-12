@@ -1,0 +1,148 @@
+<div class="mypage2">
+
+<div class="mypage">
+
+<div class="photo-mypage">
+  <div class="phototitle-mypage">
+    My Page
+  </div>
+</div>
+
+<div class="profile">
+Profile
+</div>
+
+<div class="mypage-profile">
+
+  <div class="mypage-profile-left">
+    <div class="name">
+      <div class="user_img">
+        <%= image_tag @user.image_url, style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;", size: "250x200" if @user.image?  %>
+      </div>
+
+      <div class="name1">
+        <p>Name : <%= @user.name %></p>  
+      </div>
+    </div>
+
+    <p>プロフィール : <%= @user.profile %></p>
+    <br>
+
+    <%= render 'follow_form' %>
+    <%= render 'stats' %>
+
+      <div class="edit">
+        <% if current_user.id == @user.id %>
+          <%= link_to "Edit", edit_user_registration_path %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="tabs">
+  <input id="all" type="radio" name="tab_item" checked>
+  <label class="tab_item" for="all">過去の投稿</label>
+  <input id="programming" type="radio" name="tab_item">
+  <label class="tab_item" for="programming">いいねした投稿</label>
+  
+  <div class="tab_content" id="all_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">
+        <div class="box100">
+          <% @user.gourmets.each do |t| %>
+              <%= link_to gourmet_path(t.id) do %>
+              <%= image_tag t.image_url,  class:"slide-image101" if t.image? %>
+              <% end %>
+          <% end %>
+        </div>
+      </p>
+    </div>
+  </div>
+
+  <div class="tab_content" id="programming_content">
+    <div class="tab_content_description">
+      <p class="c-txtsp">
+        <div class="box200">
+          <% @user.liked_gourmets.each do |t| %>
+            <%= link_to gourmet_path(t.id) do %>
+              <%= image_tag t.image_url,  class:"slide-image201" if t.image? %>
+            <% end %>
+          <% end %>
+        </div>
+      </p>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+
+<!--
+  <div class="mypage-profile-right">
+
+    <h2>ユーザー詳細ページ</h2>
+
+    <div class="user-in">
+      <h2><%= @user.email %></h2>
+      <% if @user.id == current_user.id %>
+        <%= @msg %>
+      <% else %>
+        <% if @isRoom == true %>
+            <p><%= link_to 'DMへ', room_path(@roomId) %></p>
+        <% else %>
+          <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e|%>
+              <% e.hidden_field :user_id, value: @user.id %>
+        <% end %>
+          <%= f.submit "DMを開始する"%>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>  
+
+    <%= link_to "ユーザー一覧に戻る", users_path %>
+
+    <style>
+    .user-in{
+    width:300px;
+    padding:10px;
+    margin:10px;
+    text-align:center;
+    border:1px solid darkgray;
+    background-color:gainsboro;
+    }
+    </style>
+
+    <h2>過去の投稿</h2>
+    <div class="box1">
+      <% @user.gourmets.each do |t| %>
+      <div class="image1">
+        <%= image_tag t.image_url, size: "250x200" if t.image? %>
+      </div>
+      <% end %>
+    </div>
+
+<div class="mypage-like1">
+  <div class="title-mypage-like">
+    <h2>いいねした投稿一覧</h2>
+    <% @user.liked_gourmets.each do |t| %>
+  </div>
+    
+  <div class="image2">
+    <div class="user_img">
+      <%= image_tag t.user.image_url, style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;", size: "250x200" if t.user.image? %>
+    </div>
+
+    <div class="mypage-like-username">
+      <%= link_to t.user.name, user_path(t.user.id) %>
+    </div>  
+
+    <%= image_tag t.image_url, size: "250x200" if t.image? %>
+    <% end %>
+  </div>
+</div>
+-->

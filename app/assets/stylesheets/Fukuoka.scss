@@ -1,0 +1,248 @@
+.slideBox {
+  width:100%;
+  height: 700px;
+  overflow: hidden;
+  position: relative;
+  z-index: -10;
+}
+
+
+.title {
+  font-size: 120px;
+  font-style: italic;
+  font-family: 'Kaushan Script', cursive;
+  color: #fff;
+  z-index: 11;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+/* imgのみ */
+.item2 {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 55px;
+  -webkit-animation: anime 20s 0s infinite;
+  animation: anime 20s 0s infinite;
+}
+
+.item2:nth-of-type(2) {
+  -webkit-animation-delay: 4s;
+  animation-delay: 4s;
+}
+
+.item2:nth-of-type(3) {
+  -webkit-animation-delay: 8s;
+  animation-delay: 8s;
+}
+
+.item2:nth-of-type(4) {
+  -webkit-animation-delay: 8s;
+  animation-delay: 12s;
+}
+
+.item2:nth-of-type(5) {
+  -webkit-animation-delay: 8s;
+  animation-delay: 16s;
+}
+
+/* ふわっとアニメーション */
+@keyframes anime {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    z-index: 9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes anime {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    z-index: 9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.Fukuoka-intro-container2{
+  display: flex;
+  padding-top: 30px;
+  padding-left: 30px;
+}
+
+/*
+右から左へ
+----------------------------*/
+@keyframes infinity-scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/*
+IE11対策
+----------------------------*/
+_:-ms-lang(x)::-ms-backdrop,
+.d-demo-Fukuoka {
+  display: -ms-grid;
+  overflow: hidden;
+  height: 300px;
+  width: 640px;
+  margin-top: 2.5%;
+}
+/*----------------------------*/
+
+
+
+.d-demo__wrap-Fukuoka {
+  display: flex;
+  overflow: hidden;
+  width: 640px;
+}
+
+.d-demo__list-Fukuoka {
+  display: flex;
+  list-style: none;
+  height: 300px;
+  justify-content: center;
+}
+
+.d-demo__list--left-Fukuoka {
+animation :infinity-scroll-left 40s infinite linear 0.1s both;
+}
+
+/*
+.d-demo__item {
+  width: calc(100vw / 6);
+}
+.d-demo__item > img{
+  width: 100%;
+}
+*/
+
+.slide-image1 {
+  width: auto;
+  height: 300px;
+  margin-right: 20px;
+}
+
+.Fukuoka-intro{
+margin: 0 0 0 20px;
+padding: 0;
+display: flex;
+}
+
+.Fukuoka-intro-title{
+-ms-writing-mode: tb-rl;
+writing-mode: vertical-rl;
+}
+
+.Fukuoka-intro-detail{
+-ms-writing-mode: tb-rl;
+writing-mode: vertical-rl;
+}
+
+
+.Fukuoka-gourmet-title{
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-weight: bold;
+}
+
+.Fukuoka-gourmet1-container{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 100px;
+}
+
+.Fukuoka-gourmet1-photo{
+  width: 50%; /*画像サイズ指定*/
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  /*left:5%;*/
+}
+
+.Fukuoka-gourmet1-right{
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+.Fukuoka-gourmet1-title {
+  margin: 0;
+  padding-top: 30px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.Fukuoka-gourmet1-detail{
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.Fukuoka-gourmet2-container{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 100px;
+}
+
+.Fukuoka-gourmet2-photo{
+  width: 50%; /*画像サイズ指定*/
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  /*left:15%;*/
+}
+
+.Fukuoka-gourmet2-right{
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+.Fukuoka-gourmet2-title {
+  margin: 0;
+  padding-top: 30px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.Fukuoka-gourmet2-detail{
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.slide-image2{
+  border-radius: 40px/60px ; 
+}

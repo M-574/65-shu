@@ -1,0 +1,54 @@
+<div class="signup1">
+
+<!--
+  <video autoplay="autoplay" loop="loop" muted="muted" class="video-content">
+    <source src="videos/Gotouchi.mp4" type="video/mp4">
+  </video>
+-->
+
+<video autoplay="autoplay" loop="loop" muted="muted" class="video-content" 			src="https://webukatu.com/wordpress/wp-content/uploads/2020/11/Creux-De-Van-45150.mp4"></video>
+
+<div class="signup2">
+
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <br/>
+    <%= f.text_field :name, autofocus: true, placeholder: "Name", style: "width: 250px;" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.email_field :email, autofocus: true, placeholder: "Email", style: "width: 250px;"  %>
+  </div>
+
+  <div class="field">
+  <!--
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+  -->  
+    <br />
+    <%= f.password_field :password, placeholder: "Password(6characters minimum)", style: "width: 250px;"  %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.password_field :password_confirmation, placeholder: "Password-confirmation", style: "width: 250px;"  %>
+  </div>
+
+  <div class="actions">
+  <%= f.submit "Sign up", style: "text-align: center;" %>
+  </div>
+<% end %>
+
+</div>
+</div>

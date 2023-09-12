@@ -1,0 +1,110 @@
+<div class="photo-Motunabe">
+  <div class="phototitle-Motunabe">
+    もつ鍋
+  </div>
+</div>
+
+<!--
+<div class="img-box">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+-->
+
+<!--
+<div class="slideBox">
+  <img class="item1" src="assets/images/Motunabe11.jpg" alt="">
+  <img class="item1" src="assets/images/Motunabe22.jpg" alt="">
+  <img class="item1" src="assets/images/Motunabe33.jpg" alt="">
+</div>
+-->
+
+<div class="slideBox">
+<p class="title">もつ鍋</p>
+  <%= image_tag "Motunabe11.jpg", class:"item1" %>
+  <%= image_tag "Motunabe22.jpg", class:"item1" %>
+  <%= image_tag "Motunabe33.jpg", class:"item1" %>
+</div>
+
+
+<div class="Motunabe-pagenation">
+<%= page_entries_info @Motunabe %>
+<%= paginate @Motunabe %>
+<div>
+
+<div class="Motunabebox">
+
+<% @Motunabe.each do |t| %>
+<% if t.food == "もつ鍋" %>
+  <div class="Motunabe-gourmets-container">
+    <div class="gourmet">
+      <div class="user_img">
+        <%= image_tag t.user.image_url, style: "border-radius: 50%; width: 100px; height: 100px; object-fit:cover;", size: "250x200" if t.user.image? %>
+      </div>
+
+      <div class="detail">
+        <% t.tags.each do |tag| %>
+          <%= tag.name %>
+        <% end %> 
+
+        店名：<%= t.shop_name %>
+        <br>
+        価格：<%= t.price %> 
+        <br>
+        住所：<%= t.addres %>  
+    
+        <div>
+        総合評価：
+          <span class="star-rating">
+          <span class="star-rating-front" style="width: <%= getPercent(t.overall) %>%;">★★★★★</span>
+          <span class="star-rating-back">★★★★★</span>
+          </span> 
+        </div>
+      </div>  
+    </div>
+
+    <div class="photo-Motunabe">
+      <%= image_tag t.image_url, size: "250x200" if t.image? %>
+    </div>
+
+    <div class="detail2">
+    <%= link_to "詳細", gourmet_path(t.id) %>
+
+    <br>
+
+    <%= link_to t.user.name, user_path(t.user.id) %>
+    <%= t.created_at %>
+
+    <br>
+
+    <% if user_signed_in? %>
+      <% if current_user.already_liked?(t) %>
+        <%= link_to gourmet_like_path(id: t.id, gourmet_id: t.id), method: :delete do %>
+        <i class="fas fa-heart"></i><%= t.likes.count %>
+        <% end %>
+      <% else %>
+        <%= link_to gourmet_likes_path(id: t.id, gourmet_id: t.id), method: :gourmet do %>
+        <i class="fas fa-heart"></i><%= t.likes.count %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <i class="fas fa-heart"></i><%= t.likes.count %>
+    <% end %>
+
+    <br>
+
+    <% if user_signed_in? && current_user.id == t.user_id %>
+      <%= link_to "編集", edit_gourmet_path(t.id) %>
+      <%= link_to "削除", gourmet_path(t.id), method: :delete %>
+    <% end %> 
+
+    </div>  
+  </div>
+<% end %>
+<% end %>
+
+</div>
+

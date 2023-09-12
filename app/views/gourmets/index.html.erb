@@ -1,0 +1,242 @@
+<div class="photo-index">
+  <div class="phototitle-index">
+    Search
+  </div>
+</div>
+
+<!--
+<%= form_tag gourmets_path, method: :get, class: 'boards__searchForm' do %>
+  <%= select_tag :tag_id,
+    options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+    {prompt: '都道府県を選択する',onchange: 'submit(this.form);'
+    }   
+  %>
+<% end %>
+-->
+
+<div class="area1">
+  <div class="Hokkaido">
+    <a href="/gourmets/Hokkaido"><h3>北海道</h3></a>
+  </div>
+
+  <div class="Tokyo">
+    <a href="/gourmets/Tokyo"><h3>東京</h3></a>
+  </div>
+</div>
+
+<div class="area2">
+  <div class="Osaka">
+    <a href="/gourmets/Osaka"><h3>大阪</h3></a>
+  </div>
+
+  <div class="Fukuoka">
+    <a href="/gourmets/Fukuoka"><h3>福岡</h3></a>
+  </div>
+</div>
+
+
+
+
+
+<!--
+<section id="Hokkaido-block">
+  <h2>北海道のご当地グルメ</h2>
+  <div class="area"> 
+    <h2>ジンギスカン</h2>
+    <%= link_to "ジンギスカンのお店はこちら", gourmets_Ginghiskhan_path %>
+    <br>
+    <h2>海鮮丼</h2>
+    <%= link_to "海鮮丼のお店はこちら", gourmets_Kaisendon_path %>
+    <br>
+    <h2>札幌ラーメン</h2>
+    <%= link_to "札幌ラーメンのお店はこちら", gourmets_Sappororamen_path %>
+    <br>
+    <h2>その他</h2>
+    <%= link_to "その他のお店はこちら", gourmets_Hokkaidoelse_path %>
+    <br>
+    <%= link_to "北海道のご当地グルメ一覧", gourmets_Hokkaido_path %>
+  </div>
+</section>
+
+<section id="Tokyo-block">
+  <h2>東京のご当地グルメ</h2>
+  <div class="area"> 
+    <h2>江戸前寿司</h2>
+    <%= link_to "江戸前寿司のお店はこちら", gourmets_Edomaezushi_path %>
+    <br>
+    <h2>もんじゃ焼き</h2>
+    <%= link_to "もんじゃ焼きのお店はこちら", gourmets_Monzyayaki_path %>
+    <br>
+    <h2>どじょう鍋</h2>
+    <%= link_to "どじょう鍋のお店はこちら", gourmets_Chankonabe_path %>
+    <br>
+    <h2>その他</h2>
+    <%= link_to "その他のお店はこちら", gourmets_Tokyoelse_path %>
+    <br>
+    <%= link_to "東京のご当地グルメ", gourmets_Tokyo_path %>
+  </div>
+</section>
+
+<section id="Osaka-block">
+  <h2>大阪のご当地グルメ</h2>
+  <div class="area"> 
+    <h2>たこ焼き</h2>
+    <%= link_to "たこ焼きのお店はこちら", gourmets_Takoyaki_path %>
+    <br>
+    <h2>お好み焼き</h2>
+    <%= link_to "お好み焼きのお店はこちら", gourmets_Okonomiyaki_path %>
+    <br>
+    <h2>串カツ</h2>
+    <%= link_to "串カツのお店はこちら", gourmets_Kushikatu_path %>
+    <br>
+    <h2>その他</h2>
+    <%= link_to "その他", gourmets_Osakaelse_path %>
+    <br>
+    <%= link_to "大阪のご当地グルメ", gourmets_Osaka_path %>
+  </div>
+</section>
+
+<section id="Fukuoka-block">
+  <h2>福岡のご当地グルメ</h2>
+  <div class="area"> 
+    <%= link_to "福岡のご当地グルメ", gourmets_Fukuoka_path %>
+    <h2>もつ鍋</h2>
+    <%= link_to "もつ鍋のお店はこちら", gourmets_Motunabe_path %>
+    <br>
+    <h2>博多ラーメン</h2>
+    <%= link_to "博多ラーメンのお店はこちら", gourmets_Hakataramen_path %>
+    <br>
+    <h2>水炊き</h2>
+    <%= link_to "水炊きのお店はこちら", gourmets_Mizutaki_path %>
+    <br>
+    <h2>その他</h2>
+    <%= link_to "その他のお店はこちら", gourmets_Fukuokaelse_path %>
+  </div>
+</section>
+-->
+
+<!--
+<%= page_entries_info @gourmets %>
+<%= paginate @gourmets %>
+
+<div class="index-gourmets-container">
+  <% @gourmets.each do |t| %>
+    <div class="gourmet">
+      <%= image_tag t.user.image_url, size: "250x200" if t.user.image? %>
+      <%= image_tag t.image_url, size: "250x200" if t.image? %>
+        <% t.tags.each do |tag| %>
+          <%= tag.name %>
+        <% end %> 
+
+        <br>
+        都道府県：<%= t.prefecture %>
+        <br>
+        ご当地グルメ：<%= t.food %>
+        <br>
+        お店：<%= t.shop_name %>
+        <br>
+        価格：<%= t.price %> 円
+        <br>
+        詳細：<%= t.about_shop %>
+        <br>
+        住所：<%= t.addres %>  
+      
+    <div>
+      <h2>総合評価：
+      <span class="star-rating">
+      <span class="star-rating-front" style="width: <%= getPercent(t.overall) %>%;">★★★★★</span>
+      <span class="star-rating-back">★★★★★</span>
+      </span> 
+      </h2>
+    </div>
+  
+    <%= link_to "詳細", gourmet_path(t.id) %>
+
+    <% if user_signed_in? && current_user.id == t.user_id %>
+      <%= link_to "編集", edit_gourmet_path(t.id) %>
+      <%= link_to "削除", gourmet_path(t.id), method: :delete %>
+    <% end %> 
+  
+    <% if user_signed_in? %>
+      <% if current_user.already_liked?(t) %>
+        <%= link_to gourmet_like_path(id: t.id, gourmet_id: t.id), method: :delete do %>
+        <i class="fas fa-heart"></i><%= t.likes.count %>
+        <% end %>
+      <% else %>
+        <%= link_to gourmet_likes_path(id: t.id, gourmet_id: t.id), method: :gourmet do %>
+        <i class="fas fa-heart"></i><%= t.likes.count %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <i class="fas fa-heart"></i><%= t.likes.count %>
+    <% end %>
+    <br>
+    <%= link_to t.user.name, user_path(t.user.id) %>
+    <%= t.created_at %>
+  </div>
+  <% end %>
+</div>
+-->
+
+<!--
+<div id='map'></div>
+-->
+
+<style>
+#map
+{
+  height: 600px;
+  width: 100%;
+}
+</style>
+
+
+
+<!-- js部分 -->
+<script>
+    function initMap() {
+
+      //初期表示位置
+      let latlng = new google.maps.LatLng(38.60, 139.5);
+      //デザイン
+      let styles = [
+          {
+            stylers: [
+            { "saturation": 0 },
+            { "lightness": 0 }
+            ]
+          }
+          ];
+
+      let map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5.5,
+          styles: styles,
+          center: latlng
+      });
+      let transitLayer = new google.maps.TransitLayer();
+      transitLayer.setMap(map);
+
+//複数マーカー ここから
+      <% @gourmets.each do |gourmet|%>
+        ( function() { 
+          let markerLatLng = { lat: <%= gourmet.lat %>, lng: <%= gourmet.lng %> }; // 緯度経度のデータ作成
+          let marker = new google.maps.Marker({ 
+            position: markerLatLng, 
+            map: map 
+          });
+//マーカーをクリックしたとき、詳細情報を表示
+          let infowindow = new google.maps.InfoWindow({
+            position: markerLatLng,
+            content: "<a href='<%= gourmet_url(gourmet.id) %>' target='_blank'></a>"
+          }); //ここで詳細ページへのリンクを表示させる
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+
+      })();
+      <% end %>
+      //複数マーカー ここまで  
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5YiQlX3PMEI7d7V-aL41HctWXVVCe8oU&callback=initMap" async defer></script>
